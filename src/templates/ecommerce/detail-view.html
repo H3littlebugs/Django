@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+</head>
+<body>
+    <h1>{{ product.title }}</h1>
+    <p>Precio: ${{ product.price }}</p>
+    <p>Descripción: {{ product.description }}</p>
+    <p>Vendedor: {{ product.seller }}</p>
+    <p>Color: {{ product.color }}</p>
+    <p>Dimensiones: {{ product.product_dimensions }}</p>
+    <a href="{% url 'product-update' product.pk %}">Editar</a>
+    <form action="{% url 'product-delete' product.pk %}" method="POST" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+    <br>
+    <a href="{% url 'product-list' %}">Volver a la lista</a>
+</body>
+</html>
